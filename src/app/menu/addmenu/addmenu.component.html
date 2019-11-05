@@ -1,0 +1,50 @@
+
+ <div class="container">
+  <form (ngSubmit)="onMenuAdd(f)" #f="ngForm" >
+
+    <div class="form-group" >
+      <label>Name</label>
+      <input name="name" ngModel minlength="3" #name="ngModel" type="text" placeholder="Enter " class="form-control" >
+      <label class="alert alert-danger" *ngIf="name.hasError('required') && !name.pristine " >Name is Required</label>
+      <label class="alert alert-danger" *ngIf="name.hasError('minlength') && !name.pristine " >Name should be = 8</label>
+    </div>
+
+    <div class="form-group" >
+      <label>Discription</label>
+      <input name="discription" required minlength="5" ngModel #discription="ngModel" type="text" placeholder="Enter discription" class="form-control" >
+      <label class="alert alert-danger" *ngIf="discription.hasError('minlength') && !discription.pristine " >name should be > 5</label>
+    </div>
+
+    <div class="form-group">
+      <label>Price</label>
+      <input type="number"  name="price" ngModel #price="ngModel" placeholder="Enter the price here" class="form-control">
+    </div>
+
+    <div class="form-group" >
+      <label>Category </label>
+        <select [(ngModel)]="selected" name="fk_cat_id" placeholder="ENTER USER TYPE">
+          <option *ngFor="let item of cat_data" [value]=item.cat_id>{{item.cat_name}}</option>
+        </select>
+    </div>
+
+    <div class="form-group" >
+      <label>Jain</label>
+      <input name="is_jain" ngModel type="text" placeholder="Enter jain/nonjain(1-jain,2-nonjain)" class="form-control" >
+    </div>
+
+    <div class="form-group" >
+        <label>Available</label>
+        <input name="is_available" ngModel type="text" placeholder="Enter available/not-available(1-available,2-notavailable)" class="form-control" >
+    </div>
+
+    <div class="form-group" >
+        <label>Ingredients</label>
+        <input name="ingredients" ngModel type="text" placeholder="Enter ingredients" class="form-control" >
+    </div>
+
+    <div class="form-group" >
+    <button type="submit" [disabled]="!f.valid"  class="form-control btn btn-primary" >Save</button>
+    </div>
+  </form>
+</div>
+

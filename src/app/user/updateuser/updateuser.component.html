@@ -1,0 +1,62 @@
+
+ <div class="container">
+  <form (ngSubmit)="onEmployeeUpdate(f)" #f="ngForm" >
+
+    <div class="form-group" >
+      <label>Email ID</label>
+      <input name="email_id" [(ngModel)]="email_id1" type="text" placeholder="Enter Id" class="form-control" >
+    </div>
+
+    <div class="form-group" >
+      <label>Password</label>
+      <input name="password" [(ngModel)]="password1" minlength="8" maxlength="8" #password="ngModel" type="text" placeholder="Enter password" class="form-control" >
+      <label class="alert alert-danger" *ngIf="password.hasError('minlength') && !password.pristine " >password should be = 8</label>
+      <label class="alert alert-danger" *ngIf="password.hasError('maxlength') && !password.pristine " >password should be = 8</label>
+    </div>
+
+    <div class="form-group" >
+      <label>Name</label>
+      <input name="name" required minlength="5" pattern="[a-zA-Z]*" [(ngModel)]="name1" #name="ngModel" type="text" placeholder="Enter name" class="form-control" >
+      <label class="alert alert-danger" *ngIf="name.hasError('required') && !name.pristine " >Name is Required</label>
+      <label class="alert alert-danger" *ngIf="name.hasError('minlength') && !name.pristine " >name should be > 5</label>
+      <label class="alert alert-danger" *ngIf="name.hasError('pattern') && !name.pristine " >only letters</label>
+    </div>
+
+    <div class="form-group">
+      <label>Mobile No</label>
+      <input type="number" minlength="10" maxlength="10" name="mobile_no" [(ngModel)]="mobile_no1" #mobile_no="ngModel" placeholder="Enter the Mobile number here" class="form-control">
+      <label class="alert alert-danger" *ngIf="mobile_no.hasError('minlength') && !mobile_no.pristine " >mobile_no should be = 10</label>
+      <label class="alert alert-danger" *ngIf="mobile_no.hasError('maxlength') && !mobile_no.pristine " >mobile_no should be = 10</label>
+    </div>
+
+    <div class="form-group" >
+      <label>Date Of Birth</label>
+      <input name="dob" [(ngModel)]="dob1" type="datetime" placeholder="Enter Date Of Birth" class="form-control" >
+    </div>
+
+    <div class="form-group" >
+      <label>Address</label>
+      <input name="address" [(ngModel)]="address1" type="text" placeholder="Enter Address" class="form-control" >
+    </div>
+
+    <div class="form-group" >
+      <label>Salary</label>
+      <input name="salary" [(ngModel)]="salary1" type="number" placeholder="Enter Salary" class="form-control" >
+    </div>
+
+    <div class="form-group" >
+      <label>Joining Date</label>
+      <input name="joining_date" [(ngModel)]="joining_date1" type="datetime" placeholder="Enter the joining_date" class="form-control" >
+    </div>
+
+    <div class="form-group" >
+      <label>Type of Employee</label>
+      <input name="employee_type" [(ngModel)]="employee_type1" type="number" placeholder="Enter employee_type" class="form-control" >
+    </div>
+
+    <div class="form-group" >
+    <button type="submit" [disabled]="!f.valid"  class="form-control btn btn-primary" >Save</button>
+    </div>
+  </form>
+</div>
+
